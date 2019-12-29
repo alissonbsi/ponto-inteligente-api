@@ -103,6 +103,15 @@ public class Funcionario implements Serializable {
 		return qtdHorasTrabalhoDia;
 	}
 	
+	@Column(name = "senha", nullable = false)
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	@Transient
 	public Optional<Float> getQtdHorasTrabalhoDiaOpt(){
 		return Optional.ofNullable(qtdHorasTrabalhoDia);
