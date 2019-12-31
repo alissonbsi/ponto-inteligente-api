@@ -1,6 +1,12 @@
 package com.kazale.pontointeligente.api.services;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Optional;
+
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
 import org.mockito.Mockito;
@@ -27,5 +33,37 @@ public class FuncionarioServiceTest {
 	@Before
 	public void setUp() throws Exception{
 		BDDMockito.given(this.funcionarioRepository.save(Mockito.any(Funcionario.class))).willReturn(new Funcionario());
+		BDDMockito.given(this.funcionarioRepository.getOne(Mockito.anyLong())).willReturn(new Funcionario());
+		BDDMockito.given(this.funcionarioRepository.findByEmail(Mockito.anyString())).willReturn(new Funcionario());
+		BDDMockito.given(this.funcionarioRepository.findByCpf(Mockito.anyString())).willReturn(new Funcionario());
 	}
+	
+	@Test
+	public void testPersistirFuncionario() {
+		Funcionario funcionario = this.funcionarioService.persistir(new Funcionario());
+		
+		assertNotNull(funcionario);
+	}
+	
+	@Test
+	public void testBuscarFuncionarioPorId() {
+		Optional<Funcionario> funcionario = this.funcionarioService.buscaPorId(1L);
+		
+		assertTrue(funcionario.isPresent());
+	}
+	
+	@Test
+	public void testBuscarFuncionarioPorEmail() {
+		Optional<Funcionario> funcionario = this.funcionarioService.buscaporEmail("email@email.com");
+		
+		assertTrue(funcionario.isPresent());
+	}
+	
+	@Test
+	public void testBuscarFuncionaeioPorCpf() {
+		Optional<Funcionario> funcionario = this.funcionarioService.buscarPorCpf("24291173474");
+		
+		assertTrue(funcionario.isPresent());
+	}
+	
 }

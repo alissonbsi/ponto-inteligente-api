@@ -12,10 +12,10 @@ import com.kazale.pontointeligente.api.repositories.FuncionarioRepository;
 import com.kazale.pontointeligente.api.services.FuncionarioService;
 
 @Service
-public class FuncionarioServiceImpl implements FuncionarioService{
-	
+public class FuncionarioServiceImpl implements FuncionarioService {
+
 	private static final Logger log = LoggerFactory.getLogger(FuncionarioServiceImpl.class);
-	
+
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
 
@@ -40,9 +40,6 @@ public class FuncionarioServiceImpl implements FuncionarioService{
 	@Override
 	public Optional<Funcionario> buscaPorId(Long id) {
 		log.info("Buscando funcionário pelo ID {}", id);
-		return this.funcionarioRepository.findById(id);
+		return Optional.ofNullable(this.funcionarioRepository.getOne(id));
 	}
-	
-	
-
 }
