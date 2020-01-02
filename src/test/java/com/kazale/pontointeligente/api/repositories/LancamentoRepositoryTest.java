@@ -66,13 +66,12 @@ public class LancamentoRepositoryTest {
 		assertEquals(2, lancamentos.size());
 	}
 	
-	/*@Test
+	@Test
 	public void testBuscarLancamentosPorFuncionarioIdPaginado() {
-		PageRequest page = new PageRequest(0, 10);
-		Page<Lancamento> lancamentos = this.lancamentoRepository.findByFuncionarioId(funcionarioId, page);
+		Page<Lancamento> lancamentos = this.lancamentoRepository.findByFuncionarioId(funcionarioId, PageRequest.of(0, 10));
 		
 		assertEquals(2, lancamentos.getTotalElements());
-	}*/
+	}
 	
 	public Empresa obterDadosEmpresa() throws Exception {
 		
