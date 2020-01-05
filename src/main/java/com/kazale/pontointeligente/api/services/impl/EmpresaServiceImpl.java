@@ -30,6 +30,13 @@ public class EmpresaServiceImpl implements EmpresaService{
 		log.info("Persistindo empresa: {}", empresa);
 		return this.empresarepository.save(empresa);
 	}
+
+	@Override
+	public void delete(Empresa empresa) {
+		log.info("Removendo empresa: {}", empresa);
+		this.empresarepository.delete(empresa);
+		
+	}
 	
 
 }
