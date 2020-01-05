@@ -21,25 +21,25 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
 	@Override
 	public Funcionario persistir(Funcionario funcionario) {
-		log.info("Persistindo funcionário: {}", funcionario);
+		log.info("Persistindo funcionrio: {}", funcionario);
 		return this.funcionarioRepository.save(funcionario);
 	}
 
 	@Override
 	public Optional<Funcionario> buscarPorCpf(String cpf) {
-		log.info("Buscando funcionário pelo CPF {}", cpf);
+		log.info("Buscando funcionrio pelo CPF {}", cpf);
 		return Optional.ofNullable(this.funcionarioRepository.findByCpf(cpf));
 	}
 
 	@Override
 	public Optional<Funcionario> buscaporEmail(String email) {
-		log.info("Buscando funcionário pelo email {}", email);
+		log.info("Buscando funcionrio pelo email {}", email);
 		return Optional.ofNullable(this.funcionarioRepository.findByEmail(email));
 	}
 
 	@Override
 	public Optional<Funcionario> buscaPorId(Long id) {
-		log.info("Buscando funcionário pelo ID {}", id);
+		log.info("Buscando funcionrio pelo ID {}", id);
 		return Optional.ofNullable(this.funcionarioRepository.getOne(id));
 	}
 }

@@ -7,7 +7,7 @@ import com.kazale.pontointeligente.api.entities.Funcionario;
 public interface FuncionarioService {
 	
 	/**
-	 * Persiste um funcionário na base de dados.
+	 * Persiste um funcionrio na base de dados.
 	 * 
 	 * @param funcionario
 	 * @return Funcionario
@@ -16,7 +16,7 @@ public interface FuncionarioService {
 	Funcionario persistir(Funcionario funcionario);
 	
 	/**
-	 * Busca e retorna um funcionário dado um CPF.
+	 * Busca e retorna um funcionario dado um CPF.
 	 * 
 	 * @param cpf
 	 * @param Optional<Funcionario>
@@ -24,7 +24,7 @@ public interface FuncionarioService {
 	Optional<Funcionario> buscarPorCpf(String cpf);
 	
 	/**
-	 * Busca e rettorna um funcionário dado um email
+	 * Busca e rettorna um funcionario dado um email
 	 * 
 	 * @param email
 	 * @return Optional<Funcionario>
@@ -32,7 +32,7 @@ public interface FuncionarioService {
 	Optional<Funcionario> buscaporEmail(String email);
 	
 	/**
-	 * Busca e retorna um funcionário por ID
+	 * Busca e retorna um funcionario por ID
 	 * 
 	 * @param id
 	 * @return Optional<Funcionario>

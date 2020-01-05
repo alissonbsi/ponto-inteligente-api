@@ -6,21 +6,18 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.br.CNPJ;
-import org.hibernate.validator.constraints.br.CPF;
 
-public class CadastroPFDto {
+public class FuncionarioDto {
+	
 	private Long id;
 	private String nome;
 	private String email;
-	private String senha;
-	private String cpf;
+	private Optional<String> senha = Optional.empty();
 	private Optional<String> valorHora = Optional.empty();
 	private Optional<String> qtdHorasTrabalhoDia = Optional.empty();
 	private Optional<String> qtdHorasAlmoco = Optional.empty();
-	private String cnpj;
 
-	public CadastroPFDto() {
+	public FuncionarioDto() {
 	}
 
 	public Long getId() {
@@ -31,7 +28,7 @@ public class CadastroPFDto {
 		this.id = id;
 	}
 
-	@NotEmpty(message = "Nome nao pode ser vazio.")
+	@NotEmpty(message = "Nome n„o pode ser vazio.")
 	@Length(min = 3, max = 200, message = "Nome deve conter entre 3 e 200 caracteres.")
 	public String getNome() {
 		return nome;
@@ -41,7 +38,7 @@ public class CadastroPFDto {
 		this.nome = nome;
 	}
 
-	@NotEmpty(message = "Email n√£o pode ser vazio.")
+	@NotEmpty(message = "Email n„o pode ser vazio.")
 	@Length(min = 5, max = 200, message = "Email deve conter entre 5 e 200 caracteres.")
 	@Email(message="Email invlido.")
 	public String getEmail() {
@@ -52,23 +49,12 @@ public class CadastroPFDto {
 		this.email = email;
 	}
 
-	@NotEmpty(message = "Senha no pode ser vazia.")
-	public String getSenha() {
+	public Optional<String> getSenha() {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
+	public void setSenha(Optional<String> senha) {
 		this.senha = senha;
-	}
-
-	@NotEmpty(message = "CPF nao pode ser vazio.")
-	@CPF(message="CPF invalido")
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 	public Optional<String> getValorHora() {
@@ -95,21 +81,11 @@ public class CadastroPFDto {
 		this.qtdHorasAlmoco = qtdHorasAlmoco;
 	}
 
-	@NotEmpty(message = "CNPJ nao pode ser vazio.")
-	@CNPJ(message="CNPJ invlido.")
-	public String getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-
 	@Override
 	public String toString() {
-		return "FuncionarioDto [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", cpf=" + cpf
-				+ ", valorHora=" + valorHora + ", qtdHorasTrabalhoDia=" + qtdHorasTrabalhoDia + ", qtdHorasAlmoco="
-				+ qtdHorasAlmoco + ", cnpj=" + cnpj + "]";
+		return "FuncionarioDto [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", valorHora="
+				+ valorHora + ", qtdHorasTrabalhoDia=" + qtdHorasTrabalhoDia + ", qtdHorasAlmoco=" + qtdHorasAlmoco
+				+ "]";
 	}
 
 }

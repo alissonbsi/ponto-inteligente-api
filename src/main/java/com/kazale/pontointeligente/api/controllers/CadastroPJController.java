@@ -1,6 +1,5 @@
 package com.kazale.pontointeligente.api.controllers;
 
-import java.math.BigDecimal;
 import java.security.NoSuchAlgorithmException;
 
 import javax.validation.Valid;
@@ -42,7 +41,7 @@ public class CadastroPJController {
 	public CadastroPJController() {	}
 	
 	/**
-	 * Cadastra uma pessoa jurídica no sistema.
+	 * Cadastra uma pessoa jurdica no sistema.
 	 * 
 	 * @param cadastroPJDto
 	 * @param result
@@ -78,20 +77,20 @@ public class CadastroPJController {
 	}
 	
 	/**
-	 * Verifica se a empresa ou funcionario já existem na base de dados.
+	 * Verifica se a empresa ou funcionario j existem na base de dados.
 	 * 
 	 * @param cadastroPJDto
 	 * @param result
 	 */
 	private void validarDadosExistentes(CadastroPJDto cadastroPJDto, BindingResult result) {
 		this.empresaService.buscarPorCnpj(cadastroPJDto.getCnpj())
-				.ifPresent(emp -> result.addError(new ObjectError("empresa", "Empresa já existente.")));
+				.ifPresent(emp -> result.addError(new ObjectError("empresa", "Empresa j existente.")));
 		
 		this.funcionarioService.buscarPorCpf(cadastroPJDto.getCpf())
-				.ifPresent(func -> result.addError(new ObjectError("funcionario", "Funcionário já Existente.")));
+				.ifPresent(func -> result.addError(new ObjectError("funcionario", "Funcionrio j Existente.")));
 		
 		this.funcionarioService.buscaporEmail(cadastroPJDto.getEmail())
-				.ifPresent(func -> result.addError(new ObjectError("funcionario", "Email já existente.")));
+				.ifPresent(func -> result.addError(new ObjectError("funcionario", "Email j existente.")));
 		
 	}
 	
@@ -110,7 +109,7 @@ public class CadastroPJController {
 	}
 	
 	/**
-	 * Converte os dados do DTO para funcionário
+	 * Converte os dados do DTO para funcionrio
 	 * 
 	 * @param cadastroPJDto
 	 * @param result
@@ -133,7 +132,7 @@ public class CadastroPJController {
 	}
 	
 	/**
-	 * Popula o DTO de cadastro com os dados do funcionário e empresa.
+	 * Popula o DTO de cadastro com os dados do funcionrio e empresa.
 	 * 
 	 * @param funcionario
 	 * @return CadastroPJDto

@@ -23,13 +23,13 @@ public class LancamentoServiceImpl implements LancamentoService{
 
 	@Override
 	public Page<Lancamento> buscarPorFuncionarioId(Long funcionarioId, PageRequest pageRequest) {
-		log.info("Buscando lançamentos para o funcionario ID {}", funcionarioId);
+		log.info("Buscando lanamentos para o funcionario ID {}", funcionarioId);
 		return this.lancamentoRepository.findByFuncionarioId(funcionarioId, pageRequest);
 	}
 
 	@Override
 	public Optional<Lancamento> buscaPorId(Long id) {
-		log.info("Buscando lançamentos por ID {}", id);
+		log.info("Buscando lanamentos por ID {}", id);
 		return Optional.ofNullable(this.lancamentoRepository.getOne(id));
 	}
 
@@ -41,7 +41,7 @@ public class LancamentoServiceImpl implements LancamentoService{
 
 	@Override
 	public void remover(Long id) {
-		log.info("Removendo lançamentos por ID {}", id);
+		log.info("Removendo lanamentos por ID {}", id);
 		this.lancamentoRepository.deleteById(id);
 		
 	}

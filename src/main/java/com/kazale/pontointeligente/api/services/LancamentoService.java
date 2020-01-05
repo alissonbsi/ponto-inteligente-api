@@ -9,7 +9,7 @@ import com.kazale.pontointeligente.api.entities.Lancamento;
 
 public interface LancamentoService {
 	/**
-	 * Retorna uma lista paginada de lancamentos de um determinado funcionário.
+	 * Retorna uma lista paginada de lancamentos de um determinado funcionrio.
 	 * 
 	 * @param funcionarioId
 	 * @param pageRequest

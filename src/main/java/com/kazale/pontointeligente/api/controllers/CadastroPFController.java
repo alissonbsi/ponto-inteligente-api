@@ -42,7 +42,7 @@ public class CadastroPFController {
 	}
 
 	/**
-	 * Cadastra um funcionario pessoa fÌsica no sistema
+	 * Cadastra um funcionario pessoa f√≠sica no sistema
 	 * 
 	 * @param cadastroPFDto
 	 * @param result
@@ -75,7 +75,7 @@ public class CadastroPFController {
 	}
 	
 	/**
-	 * Popula o DTO de cadastro com os dados do funcion·rio e empresa.
+	 * Popula o DTO de cadastro com os dados do funcion√°rio e empresa.
 	 * 
 	 * @param funcionario
 	 * @return CadastroPFDto
@@ -115,7 +115,7 @@ public class CadastroPFController {
 		funcionario.setPerfil(PerfilEnum.ROLE_USUARIO);
 		funcionario.setSenha(PasswordUtils.gerarBCrypt(cadastroPFDto.getSenha()));
 		cadastroPFDto.getQtdHorasAlmoco()
-					.ifPresent(qtdHorasAlmoÁo -> funcionario.setQtdHorasAlmoco(Float.valueOf(qtdHorasAlmoÁo)));
+					.ifPresent(qtdHorasAlmoco -> funcionario.setQtdHorasAlmoco(Float.valueOf(qtdHorasAlmoco)));
 		cadastroPFDto.getQtdHorasTrabalhoDia()
 					.ifPresent(qtdHorasTrabalhoDia -> funcionario.setQtdHorasTrabalhoDia(Float.valueOf(qtdHorasTrabalhoDia)));
 		cadastroPFDto.getValorHora()
@@ -126,7 +126,7 @@ public class CadastroPFController {
 	}
 
 	/**
-	 * Verifica se a empresa est· cadastrada e se o funcion·rio n„o existe na base de dados.
+	 * Verifica se a empresa est√° cadastrada e se o funcion√°rio n√°o existe na base de dados.
 	 * 
 	 * @param cadastroPFDto
 	 * @param result
@@ -136,13 +136,13 @@ public class CadastroPFController {
 		
 		Optional<Empresa> empresa = this.empresaService.buscarPorCnpj(cadastroPFDto.getCnpj());
 		if(!empresa.isPresent()) {
-			result.addError(new ObjectError("empresa", "Empresa n„o cadastrada"));
+			result.addError(new ObjectError("empresa", "Empresa n√£o cadastrada"));
 		}
 		this.funcionarioService.buscarPorCpf(cadastroPFDto.getCpf())
-				.ifPresent(func -> result.addError(new ObjectError("funcionario", "CPF j· Existente.")));
+				.ifPresent(func -> result.addError(new ObjectError("funcionario", "CPF j√° Existente.")));
 
 		this.funcionarioService.buscaporEmail(cadastroPFDto.getEmail())
-				.ifPresent(func -> result.addError(new ObjectError("funcionario", "Email j· existente.")));
+				.ifPresent(func -> result.addError(new ObjectError("funcionario", "Email j√° existente.")));
 
 	}
 }
